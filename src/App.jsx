@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Inicio } from './pages/Inicio';
+import { Catalogo } from './pages/Catalogo';
+import { Categorias } from './pages/Categorias';
 
 function App() {
- return (
-    <div className="App">
-      <Login />
-    </div>
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/catalogo" element={<Catalogo />} />
+        <Route path="/categorias" element={<Categorias />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App
+export default App;

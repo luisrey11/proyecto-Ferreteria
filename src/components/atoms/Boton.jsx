@@ -1,12 +1,13 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-
-const Boton = ({ children, type = 'submit', variant = 'primary', className }) => {
+export const Boton = ({ texto, variante = 'primary', onClick, disabled = false }) => {
   return (
-    <Button type={type} variant={variant} className={`btn-submit w-100 ${className || ''}`}>
-      {children}
-    </Button>
+    <button 
+      type="button" 
+      className={`btn btn-${variante}`} 
+      onClick={onClick} 
+      disabled={disabled}
+    >
+      {texto}
+    </button>
   );
 };
-
-export default Boton;
