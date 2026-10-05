@@ -14,6 +14,9 @@ export const Navbar = () => {
             <Link className="nav-link" to="/catalogo">Catálogo</Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link text-warning fw-semibold" to="/ofertas">🔥 Ofertas</Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" to="/categorias">Categorías</Link>
           </li>
         </ul>
