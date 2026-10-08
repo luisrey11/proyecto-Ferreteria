@@ -1,50 +1,88 @@
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
-import GrupoInput from '../molecules/GrupoInput';
-import Boton from '../atoms/Boton';
+import { InputForm } from '../atoms/InputForm';
+import { validarEmail, validarPassword } from '../../utils/validaciones';
 
-const FormularioLogin = () => {
-  const [correo, setCorreo] = useState('');
-  const [password, setPassword] = useState('');
+export const FormularioLogin = ({ onSubmitExitoso }) => {
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [errores, setErrores] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [exitoMensaje, setExitoMensaje] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value
+    });
+
+    if (name === 'email') {
+      setErrores(prev => ({ ...prev, email: validarEmail(value) }));
+    }
+    if (name === 'password') {
+      setErrores(prev => ({ ...prev, password: validarPassword(value) }));
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para enviar el formulario de inicio de sesión
+
+    const errorEmail = validarEmail(form.email);
+    const errorPassword = validarPassword(form.password);
+
+    setErrores({
+      email: errorEmail,
+      password: errorPassword
+    });
+
+    if (!errorEmail && !errorPassword) {
+      setExitoMensaje('¡Inicio de sesión exitoso!');
+      onSubmitExitoso(form);
+    } else {
+      setExitoMensaje('');
+    }
   };
 
   return (
-    <Form id="form-login" onSubmit={handleSubmit} noValidate>
-      <fieldset className="border-0 p-0 m-0">
-        <legend className="visually-hidden">Datos de acceso</legend>
+    <form onSubmit={handleSubmit} className="p-4 border rounded bg-white shadow-sm" noValidate>
+      <h3 className="mb-3 text-center fw-bold text-dark">Iniciar Sesión</h3>
 
-        <GrupoInput
-          id="correo"
-          label="Correo electrónico, teléfono o usuario"
-          type="text"
-          name="correo"
-          value={correo}
-          onChange={(e) => setCorreo(e.target.value)}
-          autoComplete="off"
-          errorId="error-correo"
-        />
-
-        <GrupoInput
-          id="password"
-          label="Contraseña"
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          errorId="error-password"
-        />
-
-        <div className="recuperar-link mb-3">
-          <a href="#">¿No puede acceder a su cuenta?</a>
+      {exitoMensaje && (
+        <div className="alert alert-success text-center" role="alert">
+          {exitoMensaje}
         </div>
+      )}
 
-        <Boton type="submit">Siguiente</Boton>
-      </fieldset>
-    </Form>
+      <InputForm
+        label="Correo Electrónico"
+        type="email"
+        name="email"
+        value={form.email}
+        onChange={handleChange}
+        placeholder="correo@ejemplo.com"
+        error={errores.email}
+      />
+
+      <InputForm
+        label="Contraseña"
+        type="password"
+        name="password"
+        value={form.password}
+        onChange={handleChange}
+        placeholder="********"
+        error={errores.password}
+      />
+
+      <button type="submit" className="btn btn-primary w-100 mt-2 py-2 fw-semibold">
+        Iniciar Sesión
+      </button>
+    </form>
   );
 };
 

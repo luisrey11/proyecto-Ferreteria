@@ -1,17 +1,24 @@
 import React from 'react';
-import { CampoTexto } from '../atoms/CampoTexto';
+import { Form } from 'react-bootstrap';
 
-export const CampoFormulario = ({ etiqueta, tipo = 'text', placeholder, valor, onChange, name }) => {
+export function CampoFormulario(props) {
+  const error = props.error ?? '';
+  const tipo = props.tipo ?? 'text';
+
   return (
-    <div className="mb-3">
-      <label className="form-label fw-semibold">{etiqueta}</label>
-      <CampoTexto 
-        tipo={tipo}
-        placeholder={placeholder}
-        valor={valor}
-        onChange={(e) => onChange(e, name)}
+    <Form.Group className="mb-3" controlId={props.id}>
+      <Form.Label>{props.etiqueta}</Form.Label>
+      <Form.Control
+        type={tipo}
+        value={props.valor}
+        onChange={(e) => props.onChange(e.target.value)}
+        isInvalid={error !== ''}
+        aria-invalid={error !== ''}
+        placeholder={props.placeholder}
       />
-    </div>
+      <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
+    </Form.Group>
   );
-};
+}
+
 export default CampoFormulario;

@@ -3,7 +3,7 @@ import InputCampo from '../atoms/InputCampo';
 
 const GrupoInput = ({ id, label, type, name, value, onChange, autoComplete, errorId, errorText }) => {
   return (
-    <div className="mb-3">
+    <>
       <InputCampo
         id={id}
         label={label}
@@ -20,7 +20,7 @@ const GrupoInput = ({ id, label, type, name, value, onChange, autoComplete, erro
       >
         {errorText}
       </small>
-    </div>
+    </>
   );
 };
 

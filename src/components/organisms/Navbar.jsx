@@ -6,7 +6,7 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm">
       <Link className="navbar-brand fw-bold" to="/">Ferretería Los Maestros</Link>
       <div className="collapse navbar-collapse">
-        <ul className="navbar-nav ms-auto">
+        <ul className="navbar-nav ms-auto align-items-center">
           <li className="nav-item">
             <Link className="nav-link" to="/">Inicio</Link>
           </li>
@@ -18,6 +18,12 @@ export const Navbar = () => {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/categorias">Categorías</Link>
+          </li>
+          {/* Botón de Inicio de Sesión agregado */}
+          <li className="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <Link className="btn btn-outline-light btn-sm px-3 py-2" to="/login">
+              Iniciar Sesión
+            </Link>
           </li>
         </ul>
       </div>
