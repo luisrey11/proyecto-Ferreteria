@@ -7,19 +7,24 @@ import { Ofertas } from './pages/Ofertas';
 import { Categorias } from './pages/Categorias';
 import { DetalleProducto } from './pages/DetalleProducto';
 import { Login } from './pages/Login';
+import { CarritoPage } from './pages/Carrito';
+import { CarritoProvider } from './context/CarritoContext';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/catalogo" element={<Catalogo />} />
-        <Route path="/ofertas" element={<Ofertas />} />
-        <Route path="/categorias" element={<Categorias />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/producto/:id" element={<DetalleProducto />} />
-      </Routes>
-    </Router>
+    <CarritoProvider> {/* 👈 El Provider envuelve todo incluyendo el Router */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/ofertas" element={<Ofertas />} />
+          <Route path="/categorias" element={<Categorias />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/producto/:id" element={<DetalleProducto />} />
+          <Route path="/carrito" element={<CarritoPage />} />
+        </Routes>
+      </Router>
+    </CarritoProvider>
   );
 }
 

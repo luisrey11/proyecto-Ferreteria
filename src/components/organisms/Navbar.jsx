@@ -19,6 +19,9 @@ export const Navbar = () => {
           <li className="nav-item">
             <Link className="nav-link" to="/categorias">Categorías</Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link text-info fw-semibold" to="/carrito">🛒 Carrito</Link>
+          </li>
           {/* Botón de Inicio de Sesión agregado */}
           <li className="nav-item ms-lg-3 mt-2 mt-lg-0">
             <Link className="btn btn-outline-light btn-sm px-3 py-2" to="/login">

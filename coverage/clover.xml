@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1791933144359" clover="3.2.0">
+  <project timestamp="1791933144359" name="All files">
+    <metrics statements="115" coveredstatements="31" conditionals="67" coveredconditionals="21" methods="50" coveredmethods="14" elements="232" coveredelements="66" complexity="0" loc="115" ncloc="115" packages="5" files="23" classes="23"/>
+    <package name="components.atoms">
+      <metrics statements="24" coveredstatements="22" conditionals="22" coveredconditionals="16" methods="10" coveredmethods="9"/>
+      <file name="Boton.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/atoms/Boton.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="3" count="2" type="stmt"/>
+      </file>
+      <file name="CampoTexto.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/atoms/CampoTexto.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="ContadorCantidad.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/atoms/ContadorCantidad.jsx">
+        <metrics statements="10" coveredstatements="8" conditionals="7" coveredconditionals="4" methods="4" coveredmethods="3"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="37" count="1" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="EtiquetaStock.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/atoms/EtiquetaStock.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+      </file>
+      <file name="InputCampo.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/atoms/InputCampo.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+      <file name="InputForm.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/atoms/InputForm.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="5" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="Precio.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/atoms/Precio.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.molecules">
+      <metrics statements="19" coveredstatements="9" conditionals="8" coveredconditionals="5" methods="12" coveredmethods="5"/>
+      <file name="CampoFormulario.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/molecules/CampoFormulario.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="18" type="stmt"/>
+      </file>
+      <file name="FilaInvetario.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/molecules/FilaInvetario.jsx">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+      <file name="FiltroCategoria.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/molecules/FiltroCategoria.jsx">
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+      <file name="GrupoInput.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/molecules/GrupoInput.jsx">
+        <metrics statements="2" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+      <file name="ItemCarrito.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/molecules/ItemCarrito.jsx">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+      <file name="TarjetaProducto.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/molecules/TarjetaProducto.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.organisms">
+      <metrics statements="61" coveredstatements="0" conditionals="29" coveredconditionals="0" methods="25" coveredmethods="0"/>
+      <file name="Carrito.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/organisms/Carrito.jsx">
+        <metrics statements="18" coveredstatements="0" conditionals="11" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="58" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="120" count="0" type="stmt"/>
+      </file>
+      <file name="CatalogoProductos.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/organisms/CatalogoProductos.jsx">
+        <metrics statements="4" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+      <file name="Footer.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/organisms/Footer.jsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="FormularioLogin.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/organisms/FormularioLogin.jsx">
+        <metrics statements="21" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+      </file>
+      <file name="FormularioPedido.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/organisms/FormularioPedido.jsx">
+        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+      <file name="FormularioProducto.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/organisms/FormularioProducto.jsx">
+        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+      <file name="Navbar.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/organisms/Navbar.jsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+      <file name="ResumenPedido.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/organisms/ResumenPedido.jsx">
+        <metrics statements="2" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.templates">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="PlantillaPublica.jsx" path="/home/ubuntu/ferreteria-meaestros/src/components/templates/PlantillaPublica.jsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="9" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="validaciones.js" path="/home/ubuntu/ferreteria-meaestros/src/utils/validaciones.js">
+        <metrics statements="9" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
