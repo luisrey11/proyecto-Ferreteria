@@ -1,44 +1,51 @@
-import { useState } from 'react';
+// src/components/atoms/ContadorCantidad.jsx
+import React from 'react';
 
-const ContadorCantidad = ({ stock, initial = 1, onAdd }) => {
-  const [cantidad, setCantidad] = useState(initial);
-
-  const incrementar = () => {
-    if (cantidad < stock) {
-      setCantidad(cantidad + 1);
+export const ContadorCantidad = ({ 
+  cantidad = 1, 
+  onIncrementar, 
+  onDecrementar, 
+  stockMaximo = 99 
+}) => {
+  
+  const handleIncrementar = () => {
+    if (cantidad < stockMaximo && typeof onIncrementar === 'function') {
+      onIncrementar();
     }
   };
 
-  const decrementar = () => {
-    if (cantidad > 1) {
-      setCantidad(cantidad - 1); // 👈 Corregido el signo menos (-)
+  const handleDecrementar = () => {
+    if (cantidad > 1 && typeof onDecrementar === 'function') {
+      onDecrementar();
     }
   };
+
+  const puedeDecrementar = cantidad > 1;
+  const puedeIncrementar = cantidad < stockMaximo;
 
   return (
-    <div className="flex flex-col items-center gap-3 p-4">
-      <div className="flex items-center gap-4">
-        <button 
-          onClick={decrementar}
-          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 font-bold"
-        >
-          -
-        </button>
-        <span className="text-xl font-semibold">{cantidad}</span>
-        <button 
-          onClick={incrementar}
-          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 font-bold"
-        >
-          +
-        </button>
-      </div>
-
+    <div className="input-group input-group-sm" style={{ width: '120px' }}>
       <button 
-        onClick={() => onAdd && onAdd(cantidad)}
-        disabled={stock === 0}
-        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400"
+        className="btn btn-outline-secondary" 
+        type="button" 
+        onClick={handleDecrementar}
+        disabled={!puedeDecrementar}
       >
-        Agregar al carrito
+        -
+      </button>
+      <input 
+        type="text" 
+        className="form-control text-center bg-white" 
+        value={cantidad} 
+        readOnly 
+      />
+      <button 
+        className="btn btn-outline-secondary" 
+        type="button" 
+        onClick={handleIncrementar}
+        disabled={!puedeIncrementar}
+      >
+        +
       </button>
     </div>
   );

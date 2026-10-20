@@ -7,8 +7,9 @@ import { Ofertas } from './pages/Ofertas';
 import { Categorias } from './pages/Categorias';
 import { DetalleProducto } from './pages/DetalleProducto';
 import { Login } from './pages/Login';
-import { CarritoPage } from './pages/Carrito';
+import CarritoPage from './pages/Carrito';
 import { CarritoProvider } from './context/CarritoContext';
+import { Stock } from './pages/Stock';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/producto/:id" element={<DetalleProducto />} />
           <Route path="/carrito" element={<CarritoPage />} />
+          <Route path="/stock" element={<Stock />} />
         </Routes>
       </Router>
     </CarritoProvider>

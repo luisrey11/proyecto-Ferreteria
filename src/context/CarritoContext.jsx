@@ -1,4 +1,3 @@
-// src/context/CarritoContext.jsx
 import React, { createContext, useContext, useState } from 'react';
 
 const CarritoContext = createContext();
@@ -7,11 +6,13 @@ export const CarritoProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
 
   const agregarAlCarrito = (producto) => {
-    setCarrito(prevCarrito => {
-      const existe = prevCarrito.find(item => item.id === producto.id);
+    setCarrito((prevCarrito) => {
+      const existe = prevCarrito.find((item) => item.id === producto.id);
       if (existe) {
-        return prevCarrito.map(item =>
-          item.id === producto.id ? { ...item, cantidad: item.cantidad + 1 } : item
+        return prevCarrito.map((item) =>
+          item.id === producto.id
+            ? { ...item, cantidad: Number(item.cantidad) + 1 }
+            : item
         );
       }
       return [...prevCarrito, { ...producto, cantidad: 1 }];
@@ -19,22 +20,38 @@ export const CarritoProvider = ({ children }) => {
   };
 
   const actualizarCantidad = (id, nuevaCantidad) => {
-    const cantidadValida = nuevaCantidad < 1 ? 1 : nuevaCantidad;
-    setCarrito(prevCarrito =>
-      prevCarrito.map(item =>
+    // Convertimos siempre a número entero válido
+    const num = parseInt(nuevaCantidad, 10);
+    const cantidadValida = isNaN(num) || num < 1 ? 1 : num;
+
+    setCarrito((prevCarrito) =>
+      prevCarrito.map((item) =>
         item.id === id ? { ...item, cantidad: cantidadValida } : item
       )
     );
   };
 
   const eliminarProducto = (id) => {
-    setCarrito(prevCarrito => prevCarrito.filter(item => item.id !== id));
+    setCarrito((prevCarrito) => prevCarrito.filter((item) => item.id !== id));
   };
 
-  const totalPedido = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+  // Recalculamos el total convirtiendo siempre a número
+  const totalPedido = carrito.reduce((acc, item) => {
+    const precio = Number(item.precio) || 0;
+    const cantidad = Number(item.cantidad) || 0;
+    return acc + precio * cantidad;
+  }, 0);
 
   return (
-    <CarritoContext.Provider value={{ carrito, agregarAlCarrito, actualizarCantidad, eliminarProducto, totalPedido }}>
+    <CarritoContext.Provider
+      value={{
+        carrito,
+        agregarAlCarrito,
+        actualizarCantidad,
+        eliminarProducto,
+        totalPedido,
+      }}
+    >
       {children}
     </CarritoContext.Provider>
   );

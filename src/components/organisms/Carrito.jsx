@@ -30,9 +30,11 @@ export const Carrito = ({ productosCarrito = [], onActualizarCantidad, onElimina
     <div className="card shadow-sm p-4 bg-white">
       <h3 className="mb-4 fw-bold text-dark">🛒 Cotización y Carrito de Pedidos</h3>
 
-      {productosCarrito.length === 0 ? (
+      {productosCarrito.length === 0 && (
         <div className="alert alert-info text-center">Tu carrito de ferretería está vacío.</div>
-      ) : (
+      )}
+
+      {productosCarrito.length > 0 && (
         <>
           <div className="table-responsive">
             <table className="table align-middle">
@@ -79,8 +81,12 @@ export const Carrito = ({ productosCarrito = [], onActualizarCantidad, onElimina
             <h4 className="fw-bold mb-0">Total del Pedido:</h4>
             <h4 className="fw-bold text-success mb-0">${total.toLocaleString()}</h4>
           </div>
+        </>
+      )}
 
-          <form onSubmit={handleSubmitPedido} className="mt-4 border-top pt-3">
+      <form onSubmit={handleSubmitPedido} className="mt-4 border-top pt-3">
+        {productosCarrito.length > 0 && (
+          <>
             <h5 className="fw-bold mb-3">Opciones de Entrega</h5>
             <div className="mb-3">
               <div className="form-check form-check-inline">
@@ -126,13 +132,13 @@ export const Carrito = ({ productosCarrito = [], onActualizarCantidad, onElimina
             <div className="alert alert-warning py-2 mb-3">
               <small>ℹ️ Condición de cuenta corriente: El pago quedará registrado como <strong>"pago pendiente a fin de mes"</strong>.</small>
             </div>
+          </>
+        )}
 
-            <button type="submit" className="btn btn-success w-100 py-2 fw-bold shadow-sm">
-              Confirmar Pedido y Cotización
-            </button>
-          </form>
-        </>
-      )}
+        <button type="submit" className="btn btn-success w-100 py-2 fw-bold shadow-sm">
+          Confirmar Pedido y Cotización
+        </button>
+      </form>
     </div>
   );
 };

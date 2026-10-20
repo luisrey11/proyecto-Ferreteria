@@ -15,4 +15,21 @@ describe('GrupoInput (Molécula)', () => {
 
     expect(onChangeMock).toHaveBeenCalled();
   });
+
+  it('muestra el texto de error cuando se le pasa la prop errorText (cubre línea 19)', () => {
+    render(
+      <GrupoInput 
+        label="Correo" 
+        value="" 
+        onChange={vi.fn()} 
+        errorText="El correo es inválido" 
+        errorId="error-correo"
+      />
+    );
+
+    // Verifica que el mensaje de error aparezca en el documento
+    const mensajeError = screen.getByText('El correo es inválido');
+    expect(mensajeError).toBeInTheDocument();
+    expect(mensajeError).toHaveStyle({ display: 'block' });
+  });
 });

@@ -3,19 +3,39 @@ import { CampoFormulario } from '../molecules/CampoFormulario';
 import { Boton } from '../atoms/Boton';
 
 export const FormularioPedido = ({ onSubmit }) => {
-  const [form, setForm] = useState({ nombre: '', direccion: '', telefono: '' });
+  const [form, setForm] = useState({ cliente: '', cantidad: '' });
 
   const handleChange = (e, name) => {
-    setForm({ ...form, [e.target.name || name]: e.target.value });
+    const fieldName = e?.target?.name || name;
+    const fieldValue = e?.target ? e.target.value : e;
+
+    setForm((prev) => ({ ...prev, [fieldName]: fieldValue }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(form);
   };
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); onSubmit(form); }} className="card p-4 shadow-sm">
-      <h4>Datos de Envío</h4>
-      <CampoFormulario etiqueta="Nombre completo" placeholder="Ej. Juan Pérez" name="nombre" valor={form.nombre} onChange={handleChange} />
-      <CampoFormulario etiqueta="Dirección" placeholder="Ej. Av. Vicuña Mackenna 123" name="direccion" valor={form.direccion} onChange={handleChange} />
-      <CampoFormulario etiqueta="Teléfono" tipo="tel" placeholder="Ej. +56912345678" name="telefono" valor={form.telefono} onChange={handleChange} />
-      <Boton texto="Confirmar Pedido" variante="primary" />
+    <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
+      <h4>Registrar Pedido</h4>
+      <CampoFormulario 
+        etiqueta="Cliente" 
+        placeholder="Ej. Juan Pérez" 
+        name="cliente" 
+        valor={form.cliente} 
+        onChange={(e) => handleChange(e, 'cliente')} 
+      />
+      <CampoFormulario 
+        etiqueta="Cantidad" 
+        tipo="number" 
+        placeholder="Ej. 5" 
+        name="cantidad" 
+        valor={form.cantidad} 
+        onChange={(e) => handleChange(e, 'cantidad')} 
+      />
+      <Boton texto="Guardar Pedido" variante="success" type="submit" />
     </form>
   );
 };

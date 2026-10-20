@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -74,28 +74,28 @@
 <a name='L9'></a><a href='#L9'>9</a>
 <a name='L10'></a><a href='#L10'>10</a>
 <a name='L11'></a><a href='#L11'>11</a>
-<a name='L12'></a><a href='#L12'>12</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L12'></a><a href='#L12'>12</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >validarEmail = (e</span>mail) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  if (!email) <span class="cstat-no" title="statement not covered" >return "El correo electrónico es obligatorio.";</span></span>
-  const regex = <span class="cstat-no" title="statement not covered" >/^[^\s@]+@[^\s@]+\.[^\s@]+$/;</span>
-<span class="cstat-no" title="statement not covered" >  if (!regex.test(email)) <span class="cstat-no" title="statement not covered" >return "El formato del correo electrónico no es válido.";</span></span>
-<span class="cstat-no" title="statement not covered" >  return "";</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const validarEmail = (email) =&gt; {
+  if (!email) return "El correo electrónico es obligatorio.";
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!regex.test(email)) return "El formato del correo electrónico no es válido.";
+  return "";
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >validarPassword = (p</span>assword) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  if (!password) <span class="cstat-no" title="statement not covered" >return "La contraseña es obligatoria.";</span></span>
-<span class="cstat-no" title="statement not covered" >  if (password.length &lt; 6) <span class="cstat-no" title="statement not covered" >return "La contraseña debe tener al menos 6 caracteres.";</span></span>
-<span class="cstat-no" title="statement not covered" >  return "";</span>
+export const validarPassword = (password) =&gt; {
+  if (!password) return "La contraseña es obligatoria.";
+  if (password.length &lt; 6) return "La contraseña debe tener al menos 6 caracteres.";
+  return "";
 };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -103,7 +103,7 @@ export const <span class="cstat-no" title="statement not covered" ><span class="
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-19T16:24:19.032Z
+                at 2026-10-20T05:25:59.241Z
             </div>
         <script src="../prettify.js"></script>
         <script>
