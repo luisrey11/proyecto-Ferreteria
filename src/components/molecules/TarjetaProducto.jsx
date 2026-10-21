@@ -43,7 +43,7 @@ export const TarjetaProducto = ({ producto, onAgregar }) => {
 
           <button 
             className="btn btn-primary w-100 py-1.5 fw-semibold shadow-sm"
-            onClick={onAgregar}
+            onClick={() => onAgregar(producto)}
           >
             Añadir al carrito
           </button>

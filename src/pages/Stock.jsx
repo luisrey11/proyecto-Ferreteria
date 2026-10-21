@@ -1,12 +1,19 @@
 // src/pages/Stock.jsx
 import React, { useState } from 'react';
 import PlantillaPublica from '../components/templates/PlantillaPublica';
+import { useAuth } from '../context/AuthContext'; // 👈 Importamos el contexto de autenticación
 
 export const Stock = () => {
-  // Estado para simular si el usuario actual es Administrador o Cliente
-  const [esAdmin, setEsAdmin] = useState(true);
+  // Obtenemos el usuario actual desde el AuthContext
+  const { usuario } = useAuth();
 
-  // Lista inicial de inventario con control de unidades
+  // Definimos qué correos tienen permisos de administrador
+  const correosAdministradores = ['admin@ferreteria.cl', 'gerencia@ferreteria.cl', 'soporte@ferreteria.cl', 'admin@gmail.com'];
+
+  // Verificamos si hay usuario y si su correo está en la lista de administradores
+  const esAdmin = usuario && usuario.correo && correosAdministradores.includes(usuario.correo.toLowerCase());
+
+  // Lista inicial de inventario
   const [inventario, setInventario] = useState([
     { id: 1, nombre: 'Taladro Percutor 650W', categoria: 'Herramientas Eléctricas', precio: 34990, stock: 12 },
     { id: 2, nombre: 'Juego de llaves y destornilladores', categoria: 'Herramientas Manuales', precio: 21990, stock: 8 },
@@ -19,11 +26,10 @@ export const Stock = () => {
 
   const [busqueda, setBusqueda] = useState('');
 
-  // Modificar la cantidad de stock (Solo si es Administrador)
+  // Modificar la cantidad de stock (Solo si es administrador)
   const cambiarStock = (id, delta) => {
     if (!esAdmin) {
-      alert("⚠️ Acceso denegado: Solo los administradores pueden modificar el stock.");
-      return;
+      return; // Si no es admin, no hace nada al hacer clic
     }
 
     setInventario(prev =>
@@ -48,33 +54,19 @@ export const Stock = () => {
       <div className="container my-5" translate="no">
         <div className="card shadow-sm p-4 bg-white border-0">
           
-          {/* Cabecera y Selector de Rol */}
+          {/* Cabecera */}
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
             <div>
               <h3 className="fw-bold text-dark mb-1">
                 <span>📦 Control de Inventario y Stock</span>
               </h3>
               <p className="text-muted small mb-0">
-                <span>Gestión en tiempo real de los productos disponibles en tienda.</span>
+                <span>
+                  {usuario 
+                    ? `Sesión activa: ${usuario.correo} (${esAdmin ? '👑 Administrador' : '👤 Cliente'})`
+                    : 'Modo visualización: Sin iniciar sesión'}
+                </span>
               </p>
-            </div>
-
-            {/* Selector de Rol simulado */}
-            <div className="d-flex align-items-center gap-2 bg-light p-2 rounded border">
-              <span className="small fw-semibold text-secondary">Rol actual:</span>
-              <div className="form-check form-switch mb-0">
-                <input 
-                  className="form-check-input" 
-                  type="checkbox" 
-                  role="switch" 
-                  id="switchAdmin"
-                  checked={esAdmin}
-                  onChange={() => setEsAdmin(!esAdmin)}
-                />
-                <label className="form-check-label small fw-bold text-dark" htmlFor="switchAdmin">
-                  {esAdmin ? '👑 Administrador' : '👤 Cliente / Usuario'}
-                </label>
-              </div>
             </div>
           </div>
 
@@ -89,10 +81,10 @@ export const Stock = () => {
             />
           </div>
 
-          {/* Aviso si es cliente */}
+          {/* Aviso si no es administrador o no ha iniciado sesión */}
           {!esAdmin && (
-            <div className="alert alert-info py-2 mb-3">
-              <small>ℹ️ Estás viendo el stock como cliente. Los botones de modificación de inventario están deshabilitados.</small>
+            <div className="alert alert-warning py-2 mb-3">
+              <small>ℹ️ Debes iniciar sesión con una cuenta de administrador (ej: <code>admin@ferreteria.cl</code>) para modificar el stock.</small>
             </div>
           )}
 
@@ -146,17 +138,19 @@ export const Stock = () => {
                           <div className="btn-group btn-group-sm">
                             <button
                               type="button"
-                              className={`btn ${esAdmin ? 'btn-outline-danger' : 'btn-outline-secondary opacity-50'}`}
+                              className={`btn ${esAdmin ? 'btn-outline-danger' : 'btn-outline-secondary disabled opacity-50'}`}
                               onClick={() => cambiarStock(item.id, -1)}
-                              title={esAdmin ? "Disminuir stock" : "Solo administradores"}
+                              disabled={!esAdmin} // 👈 Desactiva físicamente el botón HTML
+                              title={esAdmin ? "Disminuir stock" : "Acceso restringido a administradores"}
                             >
                               ➖
                             </button>
                             <button
                               type="button"
-                              className={`btn ${esAdmin ? 'btn-outline-success' : 'btn-outline-secondary opacity-50'}`}
+                              className={`btn ${esAdmin ? 'btn-outline-success' : 'btn-outline-secondary disabled opacity-50'}`}
                               onClick={() => cambiarStock(item.id, 1)}
-                              title={esAdmin ? "Aumentar stock" : "Solo administradores"}
+                              disabled={!esAdmin} // 👈 Desactiva físicamente el botón HTML
+                              title={esAdmin ? "Aumentar stock" : "Acceso restringido a administradores"}
                             >
                               ➕
                             </button>
