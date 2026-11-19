@@ -9,6 +9,10 @@ export const Navbar = () => {
   const { carrito } = useCarrito();
   const navigate = useNavigate();
 
+  const rolActual = usuario?.rol || localStorage.getItem('rol');
+  const tieneSesion = Boolean(usuario || localStorage.getItem('token'));
+  const puedeGestionar = rolActual === 'ADMIN' || rolActual === 'VENDEDOR';
+
   const handleCerrarSesion = () => {
     cerrarSesion();
     navigate('/');
@@ -21,10 +25,10 @@ export const Navbar = () => {
           🛠️ Ferretería Los Maestros
         </Link>
 
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
         >
           <span className="navbar-toggler-icon"></span>
@@ -36,14 +40,26 @@ export const Navbar = () => {
               <Link className="nav-link" to="/">Inicio</Link>
             </li>
 
-            {/* 🛒 Dejamos únicamente el enlace a Catálogo */}
             <li className="nav-item">
               <Link className="nav-link" to="/catalogo">Catálogo</Link>
             </li>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/stock">Control de Stock</Link>
-            </li>
+            {tieneSesion && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/pedidos">Pedidos</Link>
+              </li>
+            )}
+
+            {puedeGestionar && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/stock">Control de Stock</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/pageProducto">Gestión de Productos</Link>
+                </li>
+              </>
+            )}
           </ul>
 
           <div className="d-flex align-items-center gap-3">
@@ -76,8 +92,8 @@ export const Navbar = () => {
                   </li>
                   <li><hr className="dropdown-divider" /></li>
                   <li>
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="dropdown-item text-danger fw-semibold"
                       onClick={handleCerrarSesion}
                     >

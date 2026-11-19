@@ -1,39 +1,43 @@
-// src/context/AuthContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { iniciarSesion as iniciarSesionApi, cerrarSesion as cerrarSesionApi } from '../services/authService';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  // Intentamos recuperar la sesión guardada en localStorage
-  const [usuario, setUsuario] = useState(() => {
-    const usuarioGuardado = localStorage.getItem('usuario_ferreteria');
-    return usuarioGuardado ? JSON.parse(usuarioGuardado) : null;
-  });
+  const [usuario, setUsuario] = useState(null);
 
-  // Función para Iniciar Sesión
-  const iniciarSesion = (datosUsuario) => {
-    // datosUsuario puede ser p.ej: { nombre: 'Luis Reyes', correo: 'admin@ferreteria.cl' }
-    setUsuario(datosUsuario);
-    localStorage.setItem('usuario_ferreteria', JSON.stringify(datosUsuario));
+  // Al cargar o recargar la página (F5), recupera la sesión guardada en localStorage
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const rol = localStorage.getItem('rol');
+    const nombre = localStorage.getItem('nombre');
+
+    if (token) {
+      setUsuario({ token, rol, nombre });
+    }
+  }, []);
+
+  const iniciarSesion = async (credenciales) => {
+    const data = await iniciarSesionApi(credenciales);
+    const sesion = {
+      token: data.token,
+      rol: data.rol,
+      nombre: data.nombre,
+    };
+    setUsuario(sesion);
+    return data;
   };
 
-  // Función para Cerrar Sesión
   const cerrarSesion = () => {
-    setUsuario(null);
-    localStorage.removeItem('usuario_ferreteria');
-  };
+  cerrarSesionApi();
+  setUsuario(null);
+};
 
   return (
-    <AuthContext.Provider value={{ usuario, iniciarSesion, cerrarSesion }}>
+    <AuthContext.Provider value={{ usuario, setUsuario, iniciarSesion, cerrarSesion }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth debe ser usado dentro de un AuthProvider');
-  }
-  return context;
-};
+export const useAuth = () => useContext(AuthContext);
