@@ -1,6 +1,14 @@
 import React from 'react';
 
-export const InputForm = ({ label, type = 'text', name, value, onChange, placeholder, error }) => {
+export const InputForm = (props) => {
+  const label = props.label;
+  const type = props.type ?? 'text';
+  const name = props.name;
+  const value = props.value;
+  const onChange = props.onChange;
+  const placeholder = props.placeholder;
+  const error = props.error;
+
   return (
     <div className="mb-3">
       <label className="form-label fw-semibold">{label}</label>
@@ -16,3 +24,5 @@ export const InputForm = ({ label, type = 'text', name, value, onChange, placeho
     </div>
   );
 };
+
+export default InputForm;

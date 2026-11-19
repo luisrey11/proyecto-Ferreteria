@@ -2,9 +2,16 @@ import { useState } from 'react';
 import Selector from './components/atoms/Selector';
 import ContadorCantidad from './components/atoms/ContadorCantidad';
 
-function App() {
+function App(props) {
+  const categoriasIniciales = props.categorias ?? [
+    'Herramientas',
+    'Pinturas',
+    'Plomería',
+    'Electricidad',
+  ];
+  const stockInicial = props.stockInicial ?? 10;
+
   const [categoria, setCategoria] = useState('');
-  const categoriasFerreteria = ['Herramientas', 'Pinturas', 'Plomería', 'Electricidad'];
 
   const handleAgregarAlCarrito = (cantidad) => {
     console.log(`Se agregaron ${cantidad} unidades al carrito`);
@@ -13,16 +20,17 @@ function App() {
   return (
     <div className="container mt-5">
       <h2>Prueba de Átomos</h2>
-      
+
       {/* Usando el Selector */}
-      <Selector 
+      <Selector
         etiqueta="Categoría de productos:"
-        opciones={categoriasFerreteria}
+        opciones={categoriasIniciales}
         valorSeleccionado={categoria}
         onChange={(val) => setCategoria(val)}
       />
 
-      <ContadorCantidad stock={10} onAdd={handleAgregarAlCarrito} />
+      {/* Usando el ContadorCantidad */}
+      <ContadorCantidad stock={stockInicial} onAdd={handleAgregarAlCarrito} />
     </div>
   );
 }

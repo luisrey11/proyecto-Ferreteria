@@ -1,6 +1,7 @@
 import React from 'react';
 
-export const Precio = ({ valor }) => {
+export const Precio = (props) => {
+  const valor = props.valor;
   const precioFormateado = new Intl.NumberFormat('es-CL', {
     style: 'currency',
     currency: 'CLP'
@@ -12,3 +13,5 @@ export const Precio = ({ valor }) => {
     </span>
   );
 };
+
+export default Precio;
